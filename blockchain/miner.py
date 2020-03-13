@@ -25,7 +25,11 @@ def proof_of_work(last_proof):
     print("Searching for next proof")
     proof = 0
     #  TODO: Your code here
-
+    last_proof_string = json.dumps(last_proof, sort_keys=True).encode()
+    last_proof_hash = hashlib.sha256(last_proof_string).hexdigest()
+    while valid_proof(last_proof_hash, proof) is False:
+        proof += 1
+    
     print("Proof found: " + str(proof) + " in " + str(timer() - start))
     return proof
 
