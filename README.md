@@ -23,12 +23,30 @@ This sprint challenge is divided up into three parts:  Hash tables coding, block
 ## Interview Questions
 
 Explain in detail the workings of a dynamic array:
-* What is the runtime complexity to access an array, add or remove from the front, and add or remove from the back?
-* What is the worse case scenario if you try to extend the storage size of a dynamic array?
+ANSWER:
+A dynamic array is similar to an array, but with the difference that its size can be dynamically modified at runtime. Don’t need to specify how much large an array beforehand. A dynamic array can, once the array is filled, allocate a bigger chunk of memory, copy the contents from the original array to this new space, and continue to fill the available slots.
+
+The key is to provide means to grow an array A that stores the elements of a list. We can’t actually grow the array, its capacity is fixed. If an element is appended to a list at a time, when the underlying array is full, we need to perform following steps.
+
+Allocate a new array B with larger capacity (A commonly used rule for the new array is to have twice the capacity of the existing array )
+1. Set B[i]=A[i], for i=0 to n-1 where n denotes the current no of items.
+2. Set A=B that is, we hence forth use B as the array of supporting list.
+3. Insert new element in the new array.
+
+* What is the runtime complexity to access an array, add or remove from the front, and add or remove from the back? 0(1)
+* What is the worse case scenario if you try to extend the storage size of a dynamic array? 0(n)
 
 Explain how a blockchain is structured. What are the blocks, what is the chain? How is the data organized?
+
+ANSWER:
+Blockchain is a linear chain of blocks that holds information of transactions taking place over the web. Every block contains data in the form of coding that is organized in a chronological manner.
+
+Blocks store primary information about transactions, such as date, time, and purchase amount of your last transaction. A block also has an index,
+the hash of the previous block and the proof used in mining this block.
  
 Explain how proof of work functions. How does it operate. How does this protect the chain from attack. What kind of attack is possible?
+ANSWER
+In Blockchain, this algorithm is used to confirm transactions and produce new blocks to the chain. With PoW, miners compete against each other to complete transactions on the network and get rewarded.
 
 ## Project Set Up
 
